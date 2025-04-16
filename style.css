@@ -17,6 +17,11 @@
     color: darkolivegreen;
 }
 
+.timerType{
+    font-size: 20px;
+    color: darkolivegreen;
+}
+
 button{
     font-size: 18px;
     padding: 10px 20px;
@@ -38,7 +43,7 @@ button:hover{
     background-color: darkolivegreen;
 }
 
-#stop{
+#pause{
     background-color: darkred;
 }
 
