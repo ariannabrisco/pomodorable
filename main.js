@@ -55,7 +55,7 @@ function resetTimer(){
 function calcNextTimerType(){
     if(timerType == "Work"){
         workCount += 1;
-        alert(timerType + " time's up!\nWork Count: " + workCount + "\nShort Break Count: " + breakCount);
+        snackbarNotif();
         if(breakCount != 0 && breakCount % 3 === 0){
             switchTimerType("LongBreak");
         } else if(breakCount != 0 && breakCount % 4 === 0){
@@ -65,15 +65,20 @@ function calcNextTimerType(){
         }
     } else {
         breakCount += 1;
-        alert(timerType + " time's up!\nWork Count: " + workCount + "\nShort Break Count: " + breakCount);
+        snackbarNotif();
         switchTimerType("Work");
     }
-    console.log(workCount, breakCount);
 }
 
 function switchTimerType(type){
     timerType = type;
     resetTimer();
+}
+
+function snackbarNotif(){
+    snackbarSetting = document.getElementById("snackbar");
+    snackbarSetting.className = "show";
+    setTimeout(function(){ snackbarSetting.className = snackbarSetting.className.replace("show", ""); }, 3000);
 }
 
 // ~ CALLS ~ 
