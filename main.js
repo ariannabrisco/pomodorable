@@ -39,17 +39,33 @@ function startTimer(){
             calcNextTimerType();
             updateTimer();
         }
-    }, 10)      // 1000 for actual, 10 for testing
+    }, 100)      // 1000 for actual, 10 for testing
+    updateControlButtons(true);
 }
 
 function pauseTimer(){
     clearInterval(interval);
+    updateControlButtons(false);
 }
 
 function resetTimer(){
     clearInterval(interval);
     timeLeft = timerTypeOptions[timerType];
     updateTimer();
+    updateControlButtons(false);
+}
+
+function updateControlButtons(isrunning){
+    var startButton = document.querySelector(".timer-control.start");
+    var pauseButton = document.querySelector(".timer-control.pause");
+
+    if(isrunning){
+        startButton.disabled = true;
+        pauseButton.disabled = false;
+    } else{
+        startButton.disabled = false;
+        pauseButton.disabled = true;
+    }
 }
 
 function calcNextTimerType(){
