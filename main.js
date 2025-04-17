@@ -11,7 +11,11 @@ let interval;
 let timeLeft = 1500; // seconds
 let workCount = 0;
 let breakCount = 0;
+let shortBreakCount = 0;
+let longBreakCount = 0;
+let sessionCount = 0;
 let timerType = "Work";
+let snackbarMessage;
 
 var timerTypeOptions = {
     Work: 1500,
@@ -27,7 +31,14 @@ function updateTimer(){
     let seconds = timeLeft % 60;
     let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     timerEl.innerHTML = formattedTime
-    timerTypeEl.innerHTML = timerType
+    if(timerType == "Work"){
+        timerTypeEl.innerHTML = `${timerType} ${workCount+1}`;
+    } else if(timerType == "ShortBreak"){
+        timerTypeEl.innerHTML = `${timerType} ${shortBreakCount+1}`;
+    } else if(timerType == "LongBreak"){
+        timerTypeEl.innerHTML = `${timerType} ${longBreakCount+1}`;
+    }
+
 }
 
 function startTimer(){
@@ -39,7 +50,7 @@ function startTimer(){
             calcNextTimerType();
             updateTimer();
         }
-    }, 100)      // 1000 for actual, 10 for testing
+    }, 10)      // 1000 for actual, 10 for testing
     updateControlButtons(true);
 }
 
@@ -71,17 +82,21 @@ function updateControlButtons(isrunning){
 function calcNextTimerType(){
     if(timerType == "Work"){
         workCount += 1;
-        snackbarNotif();
-        if(breakCount != 0 && breakCount % 3 === 0){
+        snackbarNotif(timerType, workCount);
+        if(shortBreakCount != 0 && shortBreakCount % 3 === 0){
             switchTimerType("LongBreak");
-        } else if(breakCount != 0 && breakCount % 4 === 0){
-            alert("Pomodoro Session Complete! Great Job!")
         } else {
             switchTimerType("ShortBreak");
         }
-    } else {
+    } else if(timerType == "ShortBreak"){
+        shortBreakCount += 1;
+        snackbarNotif(timerType, breakCount);
+        switchTimerType("Work");
+    } else if(timerType == "LongBreak"){
+        longBreakCount += 1;
         breakCount += 1;
-        snackbarNotif();
+        alert("Pomodoro Session Complete! Great Job!")
+        sessionCount += 1;
         switchTimerType("Work");
     }
 }
@@ -91,8 +106,10 @@ function switchTimerType(type){
     resetTimer();
 }
 
-function snackbarNotif(){
+function snackbarNotif(name, count){
     snackbarSetting = document.getElementById("snackbar");
+    snackbarMessage = `${name} Session ${count} Complete!`
+    document.getElementById("snackbar").textContent = snackbarMessage
     snackbarSetting.className = "show";
     setTimeout(function(){ snackbarSetting.className = snackbarSetting.className.replace("show", ""); }, 3000);
 }
