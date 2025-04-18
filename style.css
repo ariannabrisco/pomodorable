@@ -54,6 +54,11 @@ button:hover{
     background-color: darkgray;
 }
 
+#restartSession{
+    background-color: red;
+    color: yellow;
+}
+
 /* Snackbar */
 #snackbar{
     visibility: hidden;
