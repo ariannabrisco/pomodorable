@@ -5,12 +5,15 @@ const resetEl = document.getElementById("reset")
 const timerEl = document.getElementById("timer")
 const timerTypeEl = document.getElementById("timerType")
 
+const lengthEl = document.getElementById("length")
+
 
 // ~ LETS ~
 let interval;
-let timeLeft = 1500; // seconds
+let lengthChoice = 25;
+let timeLeft = lengthChoice * 60; // seconds
 let workCount = 0;
-let breakCount = 0;
+let totalBreakCount = 0;
 let shortBreakCount = 0;
 let longBreakCount = 0;
 let sessionCount = 0;
@@ -18,9 +21,9 @@ let timerType = "Work";
 let snackbarMessage;
 
 var timerTypeOptions = {
-    Work: 1500,
-    ShortBreak: 300,
-    LongBreak: 900
+    Work: lengthChoice * 60,
+    ShortBreak: lengthChoice * (1/5) * 60,
+    LongBreak: lengthChoice * (3/5) * 60
 }
 
 
@@ -66,19 +69,7 @@ function resetTimer(){
     updateControlButtons(false);
 }
 
-function updateControlButtons(isrunning){
-    var startButton = document.querySelector(".timer-control.start");
-    var pauseButton = document.querySelector(".timer-control.pause");
-
-    if(isrunning){
-        startButton.disabled = true;
-        pauseButton.disabled = false;
-    } else{
-        startButton.disabled = false;
-        pauseButton.disabled = true;
-    }
-}
-
+// switching functions
 function calcNextTimerType(){
     if(timerType == "Work"){
         workCount += 1;
@@ -90,11 +81,12 @@ function calcNextTimerType(){
         }
     } else if(timerType == "ShortBreak"){
         shortBreakCount += 1;
-        snackbarNotif(timerType, breakCount);
+        totalBreakCount += 1;
+        snackbarNotif(timerType, shortBreakCount);
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
         longBreakCount += 1;
-        breakCount += 1;
+        totalBreakCount += 1;
         alert("Pomodoro Session Complete! Great Job!")
         sessionCount += 1;
         switchTimerType("Work");
@@ -106,15 +98,55 @@ function switchTimerType(type){
     resetTimer();
 }
 
+// display & interactability functions
 function snackbarNotif(name, count){
     snackbarSetting = document.getElementById("snackbar");
-    snackbarMessage = `${name} Session ${count} Complete!`
+    snackbarMessage = `${name} Session ${(count)} Complete!`
     document.getElementById("snackbar").textContent = snackbarMessage
     snackbarSetting.className = "show";
     setTimeout(function(){ snackbarSetting.className = snackbarSetting.className.replace("show", ""); }, 3000);
 }
 
+// enable/disable buttons function
+function updateControlButtons(isrunning){
+    var startButton = document.querySelector(".timer-control.start");
+    var pauseButton = document.querySelector(".timer-control.pause");
+    var lengthButton = document.querySelector(".lengthControl");
+
+    if(isrunning){
+        startButton.disabled = true;
+        pauseButton.disabled = false;
+        lengthButton.disabled = true;
+    } else{
+        startButton.disabled = false;
+        pauseButton.disabled = true;
+    }
+    if(workCount != 0 && timerType != "Work"){
+        lengthButton.disabled = true;
+    }
+}
+
+// choice functions
+function chooseLength(){
+    if(lengthChoice === 25){
+        lengthChoice = 50;
+    } else if(lengthChoice === 50){
+        lengthChoice = 25;
+    }
+    timeLeft = lengthChoice * 60;
+    timerTypeOptions.Work = lengthChoice * 60;
+    timerTypeOptions.ShortBreak = lengthChoice * (1/5) * 60;
+    timerTypeOptions.LongBreak = lengthChoice * (3/5) * 60;
+    updateTimer();
+    
+}
+
+
 // ~ CALLS ~ 
+// event listeners
 startEl.addEventListener("click", startTimer)
 pauseEl.addEventListener("click", pauseTimer)
 resetEl.addEventListener("click", resetTimer)
+
+
+lengthEl.addEventListener("click", chooseLength)
