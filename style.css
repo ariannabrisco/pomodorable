@@ -12,7 +12,6 @@
     color: tomato;
 }
 
-/* Timer */
 .timer{
     font-size: 72px;
     color: darkolivegreen;
@@ -23,7 +22,6 @@
     color: darkolivegreen;
 }
 
-/* Buttons */
 button{
     font-size: 18px;
     padding: 10px 20px;
@@ -41,7 +39,6 @@ button:hover{
     opacity: 0.7;
 }
 
-/* Timer Control Buttons */ 
 #start{
     background-color: darkolivegreen;
 }
@@ -54,7 +51,6 @@ button:hover{
     background-color: darkgray;
 }
 
-/* Snackbar */
 #snackbar{
     visibility: hidden;
     background-color: black;
@@ -90,57 +86,4 @@ button:hover{
 @keyframes fadeout{
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity:0;}
-}
-
-/* Sidebar */
-.sidebar{
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidebar button, .dropdownButton{
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color:#818181 ;
-    display: block;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-}
-
-.sidebar button:hover, .dropdownButton:hover{
-    color: #f1f1f1;
-    opacity: 1.0;
-}
-.main{
-    margin-left: 20px;
-    font-size: 20px;
-    padding: 0px 10px;
-}
-
-.active{
-    background-color: green;
-    color: white;
-}
-
-.dropdownContainer{
-    display: none;
-    background-color: #262626;
-    padding-left: 8px;
-}
-
-.fa-caret-down{
-    float: right;
-    padding-right: 8px;
 }

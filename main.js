@@ -6,8 +6,6 @@ const timerEl = document.getElementById("timer")
 const timerTypeEl = document.getElementById("timerType")
 
 const lengthEl = document.getElementById("length")
-const length25El = document.getElementById("25")
-const length50El = document.getElementById("50")
 
 
 // ~ LETS ~
@@ -133,23 +131,6 @@ function updateControlButtons(isrunning){
 }
 
 // choice functions
-function length50(){
-    lengthChoice = 50;
-    timeLeft = lengthChoice * 60;
-    timerTypeOptions.Work = lengthChoice * 60;
-    timerTypeOptions.ShortBreak = lengthChoice * (1/5) * 60;
-    timerTypeOptions.LongBreak = lengthChoice * (3/5) * 60;
-    updateTimer();
-}
-
-function length25(){
-    lengthChoice = 25;
-    timeLeft = lengthChoice * 60;
-    timerTypeOptions.Work = lengthChoice * 60;
-    timerTypeOptions.ShortBreak = lengthChoice * (1/5) * 60;
-    timerTypeOptions.LongBreak = lengthChoice * (3/5) * 60;
-    updateTimer();
-}
 function chooseLength(){
     if(lengthChoice === 25){
         lengthChoice = 50;
@@ -164,21 +145,7 @@ function chooseLength(){
     
 }
 
-// sidebar functions
-var dropdown = document.getElementsByClassName("dropdownButton");
-var i;
 
-for (i = 0; i < dropdown.length; i++){
-    dropdown[i].addEventListener("click", function(){
-        this.classList.toggle("active");
-        var dropdownContent = this.nextElementSibling;
-        if(dropdownContent.style.display === "block"){
-            dropdownContent.style.display = "none";
-        } else{
-            dropdownContent.style.display = "block";
-        }
-    });
-}
 // ~ CALLS ~ 
 // event listeners
 startEl.addEventListener("click", startTimer)
@@ -187,6 +154,3 @@ resetEl.addEventListener("click", resetTimer)
 
 
 lengthEl.addEventListener("click", chooseLength)
-length25El.addEventListener("click", length25)
-length50El.addEventListener("click", length50)
-
