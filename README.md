@@ -6,3 +6,5 @@
  bones - https://www.100jsprojects.com/project/pomodoro-timer && https://www.youtube.com/watch?v=nm3SwCkEdjE&t=2488s
  
  snackbar - https://www.w3schools.com/howto/howto_js_snackbar.asp
+
+ sidebar - https://www.w3schools.com/howto/howto_js_dropdown_sidenav.asp
