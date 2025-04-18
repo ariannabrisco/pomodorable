@@ -85,10 +85,12 @@ function calcNextTimerType(){
         snackbarNotif(timerType, shortBreakCount);
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
-        longBreakCount += 1;
-        totalBreakCount += 1;
         alert("Pomodoro Session Complete! Great Job!")
         sessionCount += 1;
+        workCount = 0;
+        shortBreakCount = 0;
+        longBreakCount = 0;
+        totalBreakCount = 0;
         switchTimerType("Work");
     }
 }
@@ -123,6 +125,8 @@ function updateControlButtons(isrunning){
     }
     if(workCount != 0 && timerType != "Work"){
         lengthButton.disabled = true;
+    } else if(workCount % 4 == 0 && timerType == "Work"){
+        lengthButton.disabled = false;
     }
 }
 
