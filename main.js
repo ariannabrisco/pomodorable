@@ -6,8 +6,8 @@ const pauseEl = document.getElementById("pause")
 const resetEl = document.getElementById("reset")
 const restartSessionEl = document.getElementById("restartSession")
 
-const length25El = document.getElementById("25")
-const length50El = document.getElementById("50")
+const length25El = document.getElementById("length25")
+const length50El = document.getElementById("length50")
 
 
 // ~ LETS ~
@@ -87,6 +87,7 @@ function restartSession(){
         }
         switchTimerType("Work");
         updateControlButtons(false);
+        console.log(sessionStarted);
     }
 }
 
@@ -134,22 +135,27 @@ function snackbarNotif(name, count){
 function updateControlButtons(isrunning){
     var startButton = document.querySelector(".timer-control.start");
     var pauseButton = document.querySelector(".timer-control.pause");
-    var lengthButtons = document.querySelectorAll(".lengthControl");
+    var length25Button = document.querySelector(".lengthControl.ver25");
+    var length50Button = document.querySelector(".lengthControl.ver50");
 
     if(isrunning){
         startButton.disabled = true;
         pauseButton.disabled = false;
-        lengthButtons.disabled = true;
-    } else{
+        length25Button.disabled = true;
+        length50Button.disabled = true;
+    } else if(!isrunning){
         startButton.disabled = false;
         pauseButton.disabled = true;
+        if(sessionStarted){
+            length25Button.disabled = true;
+            length50Button.disabled = true;
+        } else if(!sessionStarted){
+            length25Button.disabled = false;
+            length50Button.disabled = false;
+        }
+
+        }
     }
-    if(workCount != 0 && timerType != "Work"){
-        lengthButtons.disabled = true;
-    } else if(workCount % 4 == 0 && timerType == "Work"){
-        lengthButtons.disabled = false;
-    }
-}
 
 // choice functions
 function length50(){
@@ -168,6 +174,7 @@ function length25(){
     timerTypeOptions.ShortBreak = lengthChoice * (1/5) * 60;
     timerTypeOptions.LongBreak = lengthChoice * (3/5) * 60;
     updateTimer();
+    updateControlButtons(false);
 }
 
 
