@@ -1,10 +1,15 @@
 // ~ CONSTS ~
+const mainContainerEl = document.getElementById("mainContainer")
 const timerEl = document.getElementById("timer")
 const timerTypeEl = document.getElementById("timerType")
 const startEl = document.getElementById("start")
 const pauseEl = document.getElementById("pause")
 const resetEl = document.getElementById("reset")
 const restartSessionEl = document.getElementById("restartSession")
+
+const sidebarEl = document.getElementById("sidebar")
+const openSidebarEl = document.getElementById("openSidebarButton") 
+const closeSidebarEl = document.getElementById("closeSidebarButton") 
 
 const length25El = document.getElementById("length25")
 const length50El = document.getElementById("length50")
@@ -157,6 +162,19 @@ function updateControlButtons(isrunning){
         }
     }
 
+// sidebar control functions
+function openSidebar(){
+    console.log("Open Sidebar Button clicked!")
+    sidebarEl.style.width = "250px";
+    mainContainerEl.style.marginLeft = "250px";
+}
+
+function closeSidebar(){
+    console.log("Close Sidebar Button clicked!")
+    sidebarEl.style.width = "0px";
+    mainContainerEl.style.marginLeft = "0px";
+}
+
 // choice functions
 function length50(){
     lengthChoice = 50;
@@ -200,6 +218,8 @@ pauseEl.addEventListener("click", pauseTimer)
 resetEl.addEventListener("click", resetTimer)
 restartSessionEl.addEventListener("click", restartSession)
 
+openSidebarEl.addEventListener("click", openSidebar)
+closeSidebarEl.addEventListener("click", closeSidebar)
+
 length25El.addEventListener("click", length25)
 length50El.addEventListener("click", length50)
-

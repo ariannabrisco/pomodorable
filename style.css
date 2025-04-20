@@ -1,9 +1,10 @@
-.container{
+.mainContainer{
     margin: 0 auto;
     max-width: 400px;
     text-align: center;
     padding: 20px;
     font-family: "Roboto", sans-serif;
+    transition: margin-left 0.5s;
 }
 
 .title{
@@ -98,6 +99,16 @@ button:hover{
 }
 
 /* Sidebar */
+
+.openSidebarButton{
+    transition: margin-left 0.5s;
+    padding: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: goldenrod;
+    color: white;
+}
+
 .sidebar{
     height: 100%;
     width: 200px;
@@ -108,6 +119,15 @@ button:hover{
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+    transition: 0.5s;
+}
+
+.sidebar .closeSidebarButton{
+    position: relative;
+    top: 0px;
+    right: 25px;
+    font-size: 20px;
+    margin-left: 50px;
 }
 
 .sidebar button, .dropdownButton{
@@ -122,6 +142,7 @@ button:hover{
     text-align: left;
     cursor: pointer;
     outline: none;
+    transition: 0.3s;
 }
 
 .sidebar button:hover, .dropdownButton:hover{
@@ -143,9 +164,4 @@ button:hover{
     display: none;
     background-color: #262626;
     padding-left: 8px;
-}
-
-.fa-caret-down{
-    float: right;
-    padding-right: 8px;
 }
