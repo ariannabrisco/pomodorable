@@ -7,4 +7,8 @@
  
  snackbar - https://www.w3schools.com/howto/howto_js_snackbar.asp
 
- sidebar - https://www.w3schools.com/howto/howto_js_dropdown_sidenav.asp
+ sidebar - https://www.w3schools.com/howto/howto_js_dropdown_sidenav.asp && https://www.w3schools.com/howto/howto_js_collapse_sidebar.asp
+
+ MagicAlert - Sound Effect by Universfield from Pixabay
+
+ TadaAlert - Sound Effect by freesound_community from Pixabay

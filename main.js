@@ -1,5 +1,5 @@
 // ~ CONSTS ~
-const mainContainerEl = document.getElementById("mainContainer")
+
 const timerEl = document.getElementById("timer")
 const timerTypeEl = document.getElementById("timerType")
 const startEl = document.getElementById("start")
@@ -7,6 +7,7 @@ const pauseEl = document.getElementById("pause")
 const resetEl = document.getElementById("reset")
 const restartSessionEl = document.getElementById("restartSession")
 
+const mainContainerEl = document.getElementById("mainContainer")
 const sidebarEl = document.getElementById("sidebar")
 const openSidebarEl = document.getElementById("openSidebarButton") 
 const closeSidebarEl = document.getElementById("closeSidebarButton") 
@@ -34,6 +35,9 @@ var timerTypeOptions = {
     LongBreak: lengthChoice * (3/5) * 60
 }
 
+var dropdown = document.getElementsByClassName("dropdownButton");
+var i;
+
 
 // ~ FUNCTIONS ~
 // timer functions
@@ -53,6 +57,7 @@ function updateTimer(){
 }
 
 function startTimer(){
+
     sessionStarted = true;
     interval = setInterval(()=>{
         timeLeft--;
@@ -100,6 +105,7 @@ function restartSession(){
 function calcNextTimerType(){
     if(timerType == "Work"){
         workCount ++;
+        playAlertSound('assets/sounds/alerts/magicAlert.mp3');
         snackbarNotif(timerType, workCount);
         if(shortBreakCount != 0 && shortBreakCount % 3 === 0){
             switchTimerType("LongBreak");
@@ -109,9 +115,11 @@ function calcNextTimerType(){
     } else if(timerType == "ShortBreak"){
         shortBreakCount ++;
         totalBreakCount ++;
+        playAlertSound('assets/sounds/alerts/magicAlert.mp3');
         snackbarNotif(timerType, shortBreakCount);
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
+        playAlertSound('assets/sounds/alerts/tadaAlert.mp3');
         alert("Pomodoro Session Complete! Great Job!")
         sessionCount ++;
         workCount = 0;
@@ -164,15 +172,24 @@ function updateControlButtons(isrunning){
 
 // sidebar control functions
 function openSidebar(){
-    console.log("Open Sidebar Button clicked!")
     sidebarEl.style.width = "250px";
-    mainContainerEl.style.marginLeft = "250px";
 }
 
 function closeSidebar(){
-    console.log("Close Sidebar Button clicked!")
     sidebarEl.style.width = "0px";
-    mainContainerEl.style.marginLeft = "0px";
+}
+
+// sidebar dropdown organization
+for (i = 0; i < dropdown.length; i++){
+
+    dropdown[i].addEventListener("click", function(){
+        var dropdownContent = this.nextElementSibling;
+        if(dropdownContent.style.display === "block"){
+            dropdownContent.style.display = "none";
+        } else{
+            dropdownContent.style.display = "block";
+        }
+    });
 }
 
 // choice functions
@@ -195,22 +212,13 @@ function length25(){
     updateControlButtons(false);
 }
 
-
-// sidebar functions
-var dropdown = document.getElementsByClassName("dropdownButton");
-var i;
-
-for (i = 0; i < dropdown.length; i++){
-    dropdown[i].addEventListener("click", function(){
-        this.classList.toggle("active");
-        var dropdownContent = this.nextElementSibling;
-        if(dropdownContent.style.display === "block"){
-            dropdownContent.style.display = "none";
-        } else{
-            dropdownContent.style.display = "block";
-        }
+function playAlertSound(path){
+    const alertSound = new Audio(path);
+    alertSound.play().catch(error => {
+        console.error("Trouble playing alert:", error);
     });
 }
+
 // ~ CALLS ~ 
 // event listeners
 startEl.addEventListener("click", startTimer)

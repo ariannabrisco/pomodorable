@@ -125,9 +125,8 @@ button:hover{
 .sidebar .closeSidebarButton{
     position: relative;
     top: 0px;
-    right: 25px;
     font-size: 20px;
-    margin-left: 50px;
+    margin-left: 0px;
 }
 
 .sidebar button, .dropdownButton{
@@ -148,16 +147,6 @@ button:hover{
 .sidebar button:hover, .dropdownButton:hover{
     color: #f1f1f1;
     opacity: 1.0;
-}
-.main{
-    margin-left: 20px;
-    font-size: 20px;
-    padding: 0px 10px;
-}
-
-.active{
-    background-color: green;
-    color: white;
 }
 
 .dropdownContainer{
