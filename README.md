@@ -9,6 +9,10 @@
 
  sidebar - https://www.w3schools.com/howto/howto_js_dropdown_sidenav.asp && https://www.w3schools.com/howto/howto_js_collapse_sidebar.asp
 
- MagicAlert - Sound Effect by Universfield from Pixabay
+ magicAlert - Sound Effect by Universfield from Pixabay
 
- TadaAlert - Sound Effect by freesound_community from Pixabay
+ tadaAlert - Sound Effect by freesound_community from Pixabay
+
+ bonusAlert - Sound Effect by Universfield from Pixabay
+
+ birthdayAlert - Sound Effect by Universfield from Pixabay

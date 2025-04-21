@@ -15,6 +15,9 @@ const closeSidebarEl = document.getElementById("closeSidebarButton")
 const length25El = document.getElementById("length25")
 const length50El = document.getElementById("length50")
 
+const magicAlertEl = document.getElementById("magic")
+const bonusAlertEl = document.getElementById("bonus")
+
 
 // ~ LETS ~
 let interval;
@@ -28,6 +31,9 @@ let longBreakCount = 0;
 let sessionCount = 0;
 let timerType = "Work";
 let snackbarMessage;
+let sectionAlert = "magicAlert";
+let sectionPath = `assets/sounds/alerts/${sectionAlert}.mp3`;
+
 
 var timerTypeOptions = {
     Work: lengthChoice * 60,
@@ -37,6 +43,7 @@ var timerTypeOptions = {
 
 var dropdown = document.getElementsByClassName("dropdownButton");
 var i;
+
 
 
 // ~ FUNCTIONS ~
@@ -105,7 +112,7 @@ function restartSession(){
 function calcNextTimerType(){
     if(timerType == "Work"){
         workCount ++;
-        playAlertSound('assets/sounds/alerts/magicAlert.mp3');
+        playAlertSound(sectionPath);
         snackbarNotif(timerType, workCount);
         if(shortBreakCount != 0 && shortBreakCount % 3 === 0){
             switchTimerType("LongBreak");
@@ -115,7 +122,7 @@ function calcNextTimerType(){
     } else if(timerType == "ShortBreak"){
         shortBreakCount ++;
         totalBreakCount ++;
-        playAlertSound('assets/sounds/alerts/magicAlert.mp3');
+        playAlertSound(sectionPath);
         snackbarNotif(timerType, shortBreakCount);
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
@@ -212,11 +219,17 @@ function length25(){
     updateControlButtons(false);
 }
 
+
 function playAlertSound(path){
     const alertSound = new Audio(path);
     alertSound.play().catch(error => {
         console.error("Trouble playing alert:", error);
     });
+}
+
+function setSectionAlertSound(sectionAlert){
+    sectionPath = `assets/sounds/alerts/${sectionAlert}.mp3`;
+    playAlertSound(sectionPath);
 }
 
 // ~ CALLS ~ 
@@ -231,3 +244,11 @@ closeSidebarEl.addEventListener("click", closeSidebar)
 
 length25El.addEventListener("click", length25)
 length50El.addEventListener("click", length50)
+
+magicAlertEl.addEventListener("click", function() {
+    setSectionAlertSound("magicAlert");
+});
+
+bonusAlertEl.addEventListener("click", function() {
+    setSectionAlertSound("bonusAlert");
+});
