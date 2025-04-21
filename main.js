@@ -18,6 +18,9 @@ const length50El = document.getElementById("length50")
 const magicAlertEl = document.getElementById("magic")
 const bonusAlertEl = document.getElementById("bonus")
 
+const tadaAlertEl = document.getElementById("tada")
+const birthdayAlertEl = document.getElementById("birthday")
+
 
 // ~ LETS ~
 let interval;
@@ -32,7 +35,9 @@ let sessionCount = 0;
 let timerType = "Work";
 let snackbarMessage;
 let sectionAlert = "magicAlert";
-let sectionPath = `assets/sounds/alerts/${sectionAlert}.mp3`;
+let sectionPath = `assets/sounds/alerts/section/${sectionAlert}.mp3`;
+let sessionAlert = "tadaAlert";
+let sessionPath = `assets/sounds/alerts/session/${sessionAlert}.mp3`;
 
 
 var timerTypeOptions = {
@@ -126,7 +131,7 @@ function calcNextTimerType(){
         snackbarNotif(timerType, shortBreakCount);
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
-        playAlertSound('assets/sounds/alerts/tadaAlert.mp3');
+        playAlertSound(sessionPath);
         alert("Pomodoro Session Complete! Great Job!")
         sessionCount ++;
         workCount = 0;
@@ -228,8 +233,13 @@ function playAlertSound(path){
 }
 
 function setSectionAlertSound(sectionAlert){
-    sectionPath = `assets/sounds/alerts/${sectionAlert}.mp3`;
+    sectionPath = `assets/sounds/alerts/section/${sectionAlert}.mp3`;
     playAlertSound(sectionPath);
+}
+
+function setSessionAlertSound(sessionAlert){
+    sessionPath = `assets/sounds/alerts/session/${sessionAlert}.mp3`;
+    playAlertSound(sessionPath);
 }
 
 // ~ CALLS ~ 
@@ -251,4 +261,12 @@ magicAlertEl.addEventListener("click", function() {
 
 bonusAlertEl.addEventListener("click", function() {
     setSectionAlertSound("bonusAlert");
+});
+
+tadaAlertEl.addEventListener("click", function() {
+    setSessionAlertSound("tadaAlert");
+});
+
+birthdayAlertEl.addEventListener("click", function() {
+    setSessionAlertSound("birthdayAlert");
 });
