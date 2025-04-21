@@ -132,8 +132,8 @@ function calcNextTimerType(){
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
         playAlertSound(sessionPath);
-        alert("Pomodoro Session Complete! Great Job!")
         sessionCount ++;
+        alert(`Pomodoro Session ${sessionCount} Complete! Great Job!`)
         workCount = 0;
         shortBreakCount = 0;
         longBreakCount = 0;

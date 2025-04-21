@@ -103,7 +103,6 @@ button:hover{
 }
 
 /* Sidebar */
-
 .openSidebarButton{
     transition: margin-left 0.5s;
     padding: 16px;
@@ -111,6 +110,8 @@ button:hover{
     border: none;
     background-color: goldenrod;
     color: white;
+    position: fixed;
+    top: 10px;
 }
 
 .sidebar{
