@@ -39,7 +39,7 @@ let sectionPath = `assets/sounds/alerts/section/${sectionAlert}.mp3`;
 let sessionAlert = "tadaAlert";
 let sessionPath = `assets/sounds/alerts/session/${sessionAlert}.mp3`;
 
-
+// ~ VARS ~
 var timerTypeOptions = {
     Work: lengthChoice * 60,
     ShortBreak: lengthChoice * (1/5) * 60,
@@ -48,7 +48,6 @@ var timerTypeOptions = {
 
 var dropdown = document.getElementsByClassName("dropdownButton");
 var i;
-
 
 
 // ~ FUNCTIONS ~
