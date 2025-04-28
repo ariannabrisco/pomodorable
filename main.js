@@ -21,6 +21,12 @@ const bonusAlertEl = document.getElementById("bonus")
 const tadaAlertEl = document.getElementById("tada")
 const birthdayAlertEl = document.getElementById("birthday")
 
+const previewSoundEl = document.getElementById("preview")
+
+const fiveSunnyWorkEl = document.getElementById("fiveSunny")
+const fireplaceWorkEl = document.getElementById("fireplace")
+
+
 
 // ~ LETS ~
 let interval;
@@ -241,6 +247,31 @@ function setSessionAlertSound(sessionAlert){
     playAlertSound(sessionPath);
 }
 
+
+function playWorkSound(path){
+    const workSound = new Audio(path);
+    workSound.play().catch(error => {
+        console.error("Touble playing work sound:", error);
+    });
+}
+
+function setWorkSound(workSound){
+    workPath = `assets/sounds/work/${workSound}.mp3`;
+    playPreview(workPath);
+}
+
+function playPreview(path){
+    const previewSound = new Audio(path);
+    previewSound.play().catch(error => {
+        console.error("Trouble playing preview:", error)
+    });
+
+    setTimeout(() => {
+        previewSound.pause();
+        previewSound.currentTime = 0;
+    }, 5000); // five seconds
+}
+
 // ~ CALLS ~ 
 // event listeners
 startEl.addEventListener("click", startTimer)
@@ -268,4 +299,12 @@ tadaAlertEl.addEventListener("click", function() {
 
 birthdayAlertEl.addEventListener("click", function() {
     setSessionAlertSound("birthdayAlert");
+});
+
+fiveSunnyWorkEl.addEventListener("click", function(){
+    setWorkSound("fiveSunny");
+});
+
+fireplaceWorkEl.addEventListener("click", function(){
+    setWorkSound("fireplace");
 });
