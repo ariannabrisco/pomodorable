@@ -1,5 +1,4 @@
 // ~ CONSTS ~
-
 const timerEl = document.getElementById("timer")
 const timerTypeEl = document.getElementById("timerType")
 const startEl = document.getElementById("start")
@@ -45,6 +44,11 @@ let sectionPath = `assets/sounds/alerts/section/${sectionAlert}.mp3`;
 let sessionAlert = "tadaAlert";
 let sessionPath = `assets/sounds/alerts/session/${sessionAlert}.mp3`;
 
+let workPath = `assets/sounds/work/fiveSunny.mp3`;
+let workSound = new Audio(workPath);
+workSound.loop = true;
+
+
 // ~ VARS ~
 var timerTypeOptions = {
     Work: lengthChoice * 60,
@@ -74,13 +78,18 @@ function updateTimer(){
 }
 
 function startTimer(){
-
     sessionStarted = true;
+
+    if (timerType == "Work"){
+        playWorkSound(workPath);
+        sound = workSound;
+    }
     interval = setInterval(()=>{
         timeLeft--;
         updateTimer();
         if(timeLeft === 0){
             clearInterval(interval);
+            stopPlaying(sound);
             calcNextTimerType();
             updateTimer();
         }
@@ -90,11 +99,13 @@ function startTimer(){
 
 function pauseTimer(){
     clearInterval(interval);
+    stopPlaying(sound);
     updateControlButtons(false);
 }
 
 function resetTimer(){
     clearInterval(interval);
+    stopPlaying(sound);
     timeLeft = timerTypeOptions[timerType];
     updateTimer();
     updateControlButtons(false);
@@ -229,7 +240,7 @@ function length25(){
     updateControlButtons(false);
 }
 
-
+// alerts
 function playAlertSound(path){
     const alertSound = new Audio(path);
     alertSound.play().catch(error => {
@@ -247,19 +258,32 @@ function setSessionAlertSound(sessionAlert){
     playAlertSound(sessionPath);
 }
 
-
+// work sounds
 function playWorkSound(path){
-    const workSound = new Audio(path);
+    if (workSound.src !== path){
+        workSound.pause();
+        workSound = new Audio(path);
+        workSound.loop = true;
+    }
     workSound.play().catch(error => {
         console.error("Touble playing work sound:", error);
     });
+    console.log("Playing work sound");
 }
 
 function setWorkSound(workSound){
     workPath = `assets/sounds/work/${workSound}.mp3`;
+    workSound.pause();
+    workSound = new Audio(workPath);
+    workSound.loop = true;
     playPreview(workPath);
 }
 
+function stopPlaying(sound){
+        sound.pause();
+        sound.currentTime = 0;
+}
+// loop functions
 function playPreview(path){
     const previewSound = new Audio(path);
     previewSound.play().catch(error => {
@@ -271,6 +295,7 @@ function playPreview(path){
         previewSound.currentTime = 0;
     }, 5000); // five seconds
 }
+
 
 // ~ CALLS ~ 
 // event listeners
