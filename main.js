@@ -93,7 +93,7 @@ function startTimer(){
             calcNextTimerType();
             updateTimer();
         }
-    }, 10)      // 1000 for actual, 10 for testing
+    }, 1000)      // 1000 for actual, 10 for testing
     updateControlButtons(true);
 }
 
