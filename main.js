@@ -23,7 +23,10 @@ const birthdayAlertEl = document.getElementById("birthday")
 const previewSoundEl = document.getElementById("preview")
 
 const fiveSunnyWorkEl = document.getElementById("fiveSunny")
-const fireplaceWorkEl = document.getElementById("fireplace")
+const jazzCoffeeWorkEl = document.getElementById("jazzCoffee")
+
+const fireplaceBreakEl = document.getElementById("fireplace")
+const forestBirdsBreakEl = document.getElementById("forestBirds")
 
 
 
@@ -47,6 +50,10 @@ let sessionPath = `assets/sounds/alerts/session/${sessionAlert}.mp3`;
 let workPath = `assets/sounds/work/fiveSunny.mp3`;
 let workSound = new Audio(workPath);
 workSound.loop = true;
+
+let breakPath = `assets/sounds/break/fireplace.mp3`;
+let breakSound = new Audio(breakPath);
+breakSound.loop = true;
 
 
 // ~ VARS ~
@@ -84,6 +91,11 @@ function startTimer(){
         playWorkSound(workPath);
         sound = workSound;
     }
+
+    else if (timerType == "ShortBreak" || timerType == "LongBreak"){
+        playBreakSound(breakPath);
+        sound = breakSound;
+    }
     interval = setInterval(()=>{
         timeLeft--;
         updateTimer();
@@ -93,7 +105,7 @@ function startTimer(){
             calcNextTimerType();
             updateTimer();
         }
-    }, 1000)      // 1000 for actual, 10 for testing
+    }, 10)      // 1000 for actual, 10 for testing
     updateControlButtons(true);
 }
 
@@ -115,6 +127,7 @@ function restartSession(){
     let confirmRestart = "Press confirm you want to restart the entire pomodoro session! This cannot be undone.";
     if(confirm(confirmRestart) == true){
         clearInterval(interval);
+        stopPlaying(sound);
         workCount = 0;
         shortBreakCount = 0;
         longBreakCount = 0;
@@ -268,22 +281,36 @@ function playWorkSound(path){
     workSound.play().catch(error => {
         console.error("Touble playing work sound:", error);
     });
-    console.log("Playing work sound");
 }
 
 function setWorkSound(workSound){
     workPath = `assets/sounds/work/${workSound}.mp3`;
-    workSound.pause();
     workSound = new Audio(workPath);
     workSound.loop = true;
     playPreview(workPath);
 }
 
-function stopPlaying(sound){
-        sound.pause();
-        sound.currentTime = 0;
+
+// break sounds
+
+function playBreakSound(path){
+    if (breakSound.src !== path){
+        breakSound.pause();
+        breakSound = new Audio(path);
+        breakSound.loop = true;
+    }
+    breakSound.play().catch(error => {
+        console.error("Trouble playing break sound:", error);
+    });
 }
-// loop functions
+
+function setBreakSound(breakSound){
+    breakPath = `assets/sounds/break/${breakSound}.mp3`;
+    breakSound = new Audio(breakPath);
+    breakSound.loop = true;
+    playPreview(breakPath);
+}
+// general sound functions
 function playPreview(path){
     const previewSound = new Audio(path);
     previewSound.play().catch(error => {
@@ -294,6 +321,11 @@ function playPreview(path){
         previewSound.pause();
         previewSound.currentTime = 0;
     }, 5000); // five seconds
+}
+
+function stopPlaying(sound){
+    sound.pause();
+    sound.currentTime = 0;
 }
 
 
@@ -330,6 +362,14 @@ fiveSunnyWorkEl.addEventListener("click", function(){
     setWorkSound("fiveSunny");
 });
 
-fireplaceWorkEl.addEventListener("click", function(){
-    setWorkSound("fireplace");
+jazzCoffeeWorkEl.addEventListener("click", function(){
+    setWorkSound("jazzCoffee");
+});
+
+fireplaceBreakEl.addEventListener("click", function(){
+    setBreakSound("fireplace");
+});
+
+forestBirdsBreakEl.addEventListener("click", function(){
+    setBreakSound("forestBirds");
 });

@@ -19,6 +19,10 @@ Asset Credits:
 
  birthdayAlert - Sound Effect by Universfield from Pixabay - Festive Birthday Horn
 
- fiveSunny - https://downloads.khinsider.com/game-soundtracks/album/animal-crossing-new-horizons-2020-switch-gamerip/2-05.%25205%2520p.m.%2520%2528~Sunny%2520Weather~%2529.mp3
+ fiveSunny - Animal Crossing New Horizons (2020) Nintendo Switch, Nintendo && https://downloads.khinsider.com/game-soundtracks/album/animal-crossing-new-horizons-2020-switch-gamerip/2-05.%25205%2520p.m.%2520%2528~Sunny%2520Weather~%2529.mp3
+
+ jazzCoffee - Music by Playlistsons from Pixabay - Coffee with jazz
 
  fireplace - Sound Effect by freesound_community from Pixabay - Aachen_Burning Fireplace Crackling Fire Sounds
+
+ forestBirds - Sound effect by Empress-Kathryne Nefertiti-Mumbi from Pixabay - Forest Bird Harmonies
