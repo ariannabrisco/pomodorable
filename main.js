@@ -28,7 +28,13 @@ const jazzCoffeeWorkEl = document.getElementById("jazzCoffee")
 const fireplaceBreakEl = document.getElementById("fireplace")
 const forestBirdsBreakEl = document.getElementById("forestBirds")
 
+const backgroundTypes = [
+    'blanchedAlmond',
+    'varietyPhoto'
+]
 
+const blanchedAlmondEl = document.getElementById("blanchedAlmond")
+const varietyPhotoEl = document.getElementById("varietyPhoto")
 
 // ~ LETS ~
 let interval;
@@ -328,6 +334,11 @@ function stopPlaying(sound){
     sound.currentTime = 0;
 }
 
+// background functions
+function setBackground(background){
+    document.body.classList.remove(...backgroundTypes);
+    document.body.classList.add(`${background}`);
+}
 
 // ~ CALLS ~ 
 // event listeners
@@ -372,4 +383,12 @@ fireplaceBreakEl.addEventListener("click", function(){
 
 forestBirdsBreakEl.addEventListener("click", function(){
     setBreakSound("forestBirds");
+});
+
+blanchedAlmondEl.addEventListener("click", function(){
+    setBackground("blanchedAlmond");
+});
+
+varietyPhotoEl.addEventListener("click", function(){
+    setBackground("varietyPhoto");
 });

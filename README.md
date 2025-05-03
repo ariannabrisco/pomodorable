@@ -26,3 +26,5 @@ Asset Credits:
  fireplace - Sound Effect by freesound_community from Pixabay - Aachen_Burning Fireplace Crackling Fire Sounds
 
  forestBirds - Sound effect by Empress-Kathryne Nefertiti-Mumbi from Pixabay - Forest Bird Harmonies
+
+ variety - Image by Klaus Hausmann from Pixabay - tomatoes1703968_1920.jpg
