@@ -171,3 +171,19 @@ button:hover{
     background-color: #262626;
     padding-left: 8px;
 }
+
+/* Session Tracker */
+.sessionTracker{
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 24px;
+}
+
+#sessionTable{
+    font-size: 24px;
+}
+
+th {
+    text-align: right;
+}
