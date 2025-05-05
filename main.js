@@ -196,29 +196,42 @@ function snackbarNotif(name, count){
 
 // enable/disable buttons function
 function updateControlButtons(isrunning){
-    var startButton = document.querySelector(".timer-control.start");
-    var pauseButton = document.querySelector(".timer-control.pause");
-    var length25Button = document.querySelector(".lengthControl.ver25");
-    var length50Button = document.querySelector(".lengthControl.ver50");
-
     if(isrunning){
-        startButton.disabled = true;
-        pauseButton.disabled = false;
-        length25Button.disabled = true;
-        length50Button.disabled = true;
+        startEl.disabled = true;
+        pauseEl.disabled = false;
+        length25El.disabled = true;
+        length50El.disabled = true;
+        magicAlertEl.disabled = true;
+        bonusAlertEl.disabled = true;
+        tadaAlertEl.disabled = true;
+        birthdayAlertEl.disabled = true;
+        fiveSunnyWorkEl.disabled = true;
+        jazzCoffeeWorkEl.disabled = true;
+        fireplaceBreakEl.disabled = true;
+        forestBirdsBreakEl.disabled = true;
+        loveSongBreakEl.disabled = true;
     } else if(!isrunning){
-        startButton.disabled = false;
-        pauseButton.disabled = true;
+        startEl.disabled = false;
+        pauseEl.disabled = true;
+        magicAlertEl.disabled = false;
+        bonusAlertEl.disabled = false;
+        tadaAlertEl.disabled = false;
+        birthdayAlertEl.disabled = false;
+        fiveSunnyWorkEl.disabled = false;
+        jazzCoffeeWorkEl.disabled = false;
+        fireplaceBreakEl.disabled = false;
+        forestBirdsBreakEl.disabled = false;
+        loveSongBreakEl.disabled = false;
         if(sessionStarted){
-            length25Button.disabled = true;
-            length50Button.disabled = true;
+            length25El.disabled = true;
+            length50El.disabled = true;
         } else if(!sessionStarted){
-            length25Button.disabled = false;
-            length50Button.disabled = false;
+            length25El.disabled = false;
+            length50El.disabled = false;
         }
 
         }
-    }
+}
 
 // sidebar control functions
 function openSidebar(){
@@ -242,7 +255,7 @@ for (i = 0; i < dropdown.length; i++){
     });
 }
 
-// choice functions
+// length functions
 function length50(){
     lengthChoice = 50;
     timeLeft = lengthChoice * 60;
@@ -301,7 +314,6 @@ function setWorkSound(workSound){
 }
 
 // break sounds
-
 function playBreakSound(path){
     if (breakSound.src !== path){
         breakSound.pause();
