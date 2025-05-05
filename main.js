@@ -27,6 +27,7 @@ const jazzCoffeeWorkEl = document.getElementById("jazzCoffee")
 
 const fireplaceBreakEl = document.getElementById("fireplace")
 const forestBirdsBreakEl = document.getElementById("forestBirds")
+const loveSongBreakEl = document.getElementById("loveSong")
 
 const backgroundTypes = [
     'blanchedAlmond',
@@ -37,6 +38,7 @@ const blanchedAlmondEl = document.getElementById("blanchedAlmond")
 const varietyPhotoEl = document.getElementById("varietyPhoto")
 
 const sessionTrackerEl = document.getElementById("sessionTracker")
+
 
 // ~ LETS ~
 let interval;
@@ -146,7 +148,6 @@ function restartSession(){
         }
         switchTimerType("Work");
         updateControlButtons(false);
-        console.log(sessionStarted);
     }
 }
 
@@ -170,6 +171,7 @@ function calcNextTimerType(){
     } else if(timerType == "LongBreak"){
         playAlertSound(sessionPath);
         updateSessionCount();
+        sessionStarted = false;
         workCount = 0;
         shortBreakCount = 0;
         longBreakCount = 0;
@@ -248,6 +250,7 @@ function length50(){
     timerTypeOptions.ShortBreak = lengthChoice * (1/5) * 60;
     timerTypeOptions.LongBreak = lengthChoice * (3/5) * 60;
     updateTimer();
+    updateControlButtons(false);
 }
 
 function length25(){
@@ -297,7 +300,6 @@ function setWorkSound(workSound){
     playPreview(workPath);
 }
 
-
 // break sounds
 
 function playBreakSound(path){
@@ -344,9 +346,14 @@ function setBackground(background){
 // tracking sessions
 function updateSessionCount(){
     sessionCount++;
-    sessionTrackerEl.textContent = "🍅".repeat(sessionCount);
+    if(lengthChoice == 25){
+        sessionTrackerEl.textContent += "🍅";
+    } else if(lengthChoice == 50){
+        sessionTrackerEl.textContent += "🥫";
+    }
 
 }
+
 
 // ~ CALLS ~ 
 // event listeners
@@ -391,6 +398,10 @@ fireplaceBreakEl.addEventListener("click", function(){
 
 forestBirdsBreakEl.addEventListener("click", function(){
     setBreakSound("forestBirds");
+});
+
+loveSongBreakEl.addEventListener("click", function(){
+    setBreakSound("loveSong");
 });
 
 blanchedAlmondEl.addEventListener("click", function(){
