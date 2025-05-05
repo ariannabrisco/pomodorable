@@ -179,11 +179,3 @@ button:hover{
     right: 16px;
     font-size: 24px;
 }
-
-#sessionTable{
-    font-size: 24px;
-}
-
-th {
-    text-align: right;
-}

@@ -36,6 +36,8 @@ const backgroundTypes = [
 const blanchedAlmondEl = document.getElementById("blanchedAlmond")
 const varietyPhotoEl = document.getElementById("varietyPhoto")
 
+const sessionTrackerEl = document.getElementById("sessionTracker")
+
 // ~ LETS ~
 let interval;
 let sessionStarted = false;
@@ -167,8 +169,7 @@ function calcNextTimerType(){
         switchTimerType("Work");
     } else if(timerType == "LongBreak"){
         playAlertSound(sessionPath);
-        sessionCount ++;
-        alert(`Pomodoro Session ${sessionCount} Complete! Great Job!`)
+        updateSessionCount();
         workCount = 0;
         shortBreakCount = 0;
         longBreakCount = 0;
@@ -338,6 +339,13 @@ function stopPlaying(sound){
 function setBackground(background){
     document.body.classList.remove(...backgroundTypes);
     document.body.classList.add(`${background}`);
+}
+
+// tracking sessions
+function updateSessionCount(){
+    sessionCount++;
+    sessionTrackerEl.textContent = "🍅".repeat(sessionCount);
+
 }
 
 // ~ CALLS ~ 
