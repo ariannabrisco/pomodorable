@@ -57,6 +57,7 @@ let sectionPath = `assets/sounds/alerts/section/${sectionAlert}.mp3`;
 let sessionAlert = "tadaAlert";
 let sessionPath = `assets/sounds/alerts/session/${sessionAlert}.mp3`;
 
+let previewPlaying = false;
 let workPath = `assets/sounds/work/fiveSunny.mp3`;
 let workSound = new Audio(workPath);
 workSound.loop = true;
@@ -278,10 +279,19 @@ function length25(){
 
 // alerts
 function playAlertSound(path){
-    const alertSound = new Audio(path);
-    alertSound.play().catch(error => {
-        console.error("Trouble playing alert:", error);
-    });
+    if(!previewPlaying){
+        const alertSound = new Audio(path);
+        previewPlaying = true;
+
+        alertSound.play().catch(error => {
+            console.error("Trouble playing alert:", error);
+            previewPlaying = false;
+        });
+
+        alertSound.addEventListener("ended", () => {
+            previewPlaying = false;
+        });
+    };
 }
 
 function setSectionAlertSound(sectionAlert){
@@ -295,7 +305,7 @@ function setSessionAlertSound(sessionAlert){
 }
 
 // work sounds
-function playWorkSound(path){
+function playWorkSound(path){ 
     if (workSound.src !== path){
         workSound.pause();
         workSound = new Audio(path);
@@ -331,17 +341,25 @@ function setBreakSound(breakSound){
     breakSound.loop = true;
     playPreview(breakPath);
 }
+
 // general sound functions
 function playPreview(path){
-    const previewSound = new Audio(path);
-    previewSound.play().catch(error => {
-        console.error("Trouble playing preview:", error)
-    });
+    if(!previewPlaying){
+        const previewSound = new Audio(path);
+        previewPlaying = true;
 
-    setTimeout(() => {
-        previewSound.pause();
-        previewSound.currentTime = 0;
-    }, 5000); // five seconds
+        previewSound.play().catch(error => {
+            console.error("Trouble playing preview:", error)
+            previewPlaying = false;
+        });
+    
+        setTimeout(() => {
+            previewSound.pause();
+            previewSound.currentTime = 0;
+            previewPlaying = false;
+        }, 5000); // five seconds
+    }
+
 }
 
 function stopPlaying(sound){
