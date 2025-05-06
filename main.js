@@ -30,12 +30,12 @@ const forestBirdsBreakEl = document.getElementById("forestBirds")
 const loveSongBreakEl = document.getElementById("loveSong")
 
 const backgroundTypes = [
-    'blanchedAlmond',
-    'varietyPhoto'
+    'varietyPhoto',
+    'flowerPhoto'
 ]
 
-const blanchedAlmondEl = document.getElementById("blanchedAlmond")
 const varietyPhotoEl = document.getElementById("varietyPhoto")
+const flowerPhotoEl = document.getElementById("flowerPhoto")
 
 const sessionTrackerEl = document.getElementById("sessionTracker")
 
@@ -434,10 +434,10 @@ loveSongBreakEl.addEventListener("click", function(){
     setBreakSound("loveSong");
 });
 
-blanchedAlmondEl.addEventListener("click", function(){
-    setBackground("blanchedAlmond");
-});
-
 varietyPhotoEl.addEventListener("click", function(){
     setBackground("varietyPhoto");
+});
+
+flowerPhotoEl.addEventListener("click", function(){
+    setBackground("flowerPhoto");
 });

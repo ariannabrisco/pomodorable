@@ -28,3 +28,7 @@ Asset Credits:
  forestBirds - Sound effect by Empress-Kathryne Nefertiti-Mumbi from Pixabay - Forest Bird Harmonies
 
  variety - Image by Klaus Hausmann from Pixabay - tomatoes1703968_1920.jpg
+
+ flower - Image by Sabine from Pixabay - nature-3517154_1920.jpg
+
+Font: Tomatoes by Billy Argel Fonts via dafont.com

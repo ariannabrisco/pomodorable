@@ -1,13 +1,27 @@
-body{
-    background-color: blanchedalmond;
+@font-face {
+    font-family: 'tomatoes';
+    src: url(./tomatoespersonaluse.ttf);
 }
 
-body.blanchedAlmond {
-    background-color: blanchedalmond;
+body{
+    font-family: 'tomatoes';
+    background-image: url("assets/backgrounds/static/variety.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
 }
 
 body.varietyPhoto {
     background-image: url("assets/backgrounds/static/variety.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
+}
+
+body.flowerPhoto {
+    background-image: url("assets/backgrounds/static/flower.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -128,7 +142,7 @@ button:hover{
 
 .sidebar{
     height: 100%;
-    width: 200px;
+    width: 0px;
     position: fixed;
     z-index: 1;
     top: 0;
