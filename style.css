@@ -38,7 +38,8 @@ body.flowerPhoto {
 }
 
 .title{
-    font-size: 36px;
+    font-family: 'tomatoes';
+    font-size: 40px;
     margin-bottom: 10px;
     color: tomato;
 }
