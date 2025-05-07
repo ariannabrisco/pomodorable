@@ -1,13 +1,15 @@
+/* Fonts */
 @font-face {
     font-family: 'tomatoes';
-    src: url(tomatoespersonaluse.ttf);
+    src: url(assets/fonts/tomatoespersonaluse.ttf);
 }
 
 @font-face {
     font-family: 'montserrat';
-    src: url(montserrat.ttf);
+    src: url(assets/fonts/montserrat.ttf);
 }
 
+/* Body && Backgrounds */
 body{
     font-family: 'tomatoes';
     background-image: url("assets/backgrounds/static/variety.jpg");
@@ -33,12 +35,13 @@ body.flowerPhoto {
     color: #fff;
 }
 
+/* Main Container & Title */
 .mainContainer{
     margin: 0 auto;
     max-width: 400px;
     text-align: center;
     padding: 20px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'montserrat';
     transition: margin-left 0.5s;
 }
 
@@ -86,11 +89,11 @@ button:hover{
 }
 
 #pause{
-    background-color: darkred;
+    background-color: darkgoldenrod;
 }
 
 #reset{
-    background-color: darkgray;
+    background-color: darkred;
 }
 
 #restartSession{
@@ -100,9 +103,9 @@ button:hover{
 
 /* Snackbar */
 #snackbar{
-    font-family: 'Lucidia';
+    font-family: 'montserrat';
     visibility: hidden;
-    background-color: black;
+    background-color: darkred;
     color: white;
     position: fixed;
     text-align: center;

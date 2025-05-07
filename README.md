@@ -31,4 +31,6 @@ Asset Credits:
 
  flower - Image by Sabine from Pixabay - nature-3517154_1920.jpg
 
-Font: Tomatoes by Billy Argel Fonts via dafont.com
+ Title Font: Tomatoes by Billy Argel Fonts via dafont.com
+ 
+ Font: Montserrat by Google Fonts via fonts.google.com
