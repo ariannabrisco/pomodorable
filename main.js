@@ -236,7 +236,7 @@ function updateControlButtons(isrunning){
 
 // sidebar control functions
 function openSidebar(){
-    sidebarEl.style.width = "220px";
+    sidebarEl.style.width = "210px";
 }
 
 function closeSidebar(){
