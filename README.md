@@ -23,7 +23,7 @@ Asset Credits:
 
  jazzCoffee - Music by Playlistsons from Pixabay - Coffee with jazz
 
- fireplace - Sound Effect by freesound_community from Pixabay - Aachen_Burning Fireplace Crackling Fire Sounds
+ clairDeLune - Music by Claude Debussy from Pixabay - Clair de Lune, Suite Bergamasque L. 75, 3rd Movement (Claude Debussy) (4:48s)
 
  forestBirds - Sound effect by Empress-Kathryne Nefertiti-Mumbi from Pixabay - Forest Bird Harmonies
 

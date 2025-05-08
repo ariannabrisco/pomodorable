@@ -25,7 +25,7 @@ const previewSoundEl = document.getElementById("preview")
 const fiveSunnyWorkEl = document.getElementById("fiveSunny")
 const jazzCoffeeWorkEl = document.getElementById("jazzCoffee")
 
-const fireplaceBreakEl = document.getElementById("fireplace")
+const clairDeLuneBreakEl = document.getElementById("clairDeLune")
 const forestBirdsBreakEl = document.getElementById("forestBirds")
 const loveSongBreakEl = document.getElementById("loveSong")
 
@@ -62,7 +62,7 @@ let workPath = `assets/sounds/work/fiveSunny.mp3`;
 let workSound = new Audio(workPath);
 workSound.loop = true;
 
-let breakPath = `assets/sounds/break/fireplace.mp3`;
+let breakPath = `assets/sounds/break/clairDeLune.mp3`;
 let breakSound = new Audio(breakPath);
 breakSound.loop = true;
 
@@ -208,7 +208,7 @@ function updateControlButtons(isrunning){
         birthdayAlertEl.disabled = true;
         fiveSunnyWorkEl.disabled = true;
         jazzCoffeeWorkEl.disabled = true;
-        fireplaceBreakEl.disabled = true;
+        clairDeLuneBreakEl.disabled = true;
         forestBirdsBreakEl.disabled = true;
         loveSongBreakEl.disabled = true;
     } else if(!isrunning){
@@ -220,7 +220,7 @@ function updateControlButtons(isrunning){
         birthdayAlertEl.disabled = false;
         fiveSunnyWorkEl.disabled = false;
         jazzCoffeeWorkEl.disabled = false;
-        fireplaceBreakEl.disabled = false;
+        clairDeLuneBreakEl.disabled = false;
         forestBirdsBreakEl.disabled = false;
         loveSongBreakEl.disabled = false;
         if(sessionStarted){
@@ -422,8 +422,8 @@ jazzCoffeeWorkEl.addEventListener("click", function(){
     setWorkSound("jazzCoffee");
 });
 
-fireplaceBreakEl.addEventListener("click", function(){
-    setBreakSound("fireplace");
+clairDeLuneBreakEl.addEventListener("click", function(){
+    setBreakSound("clairDeLune");
 });
 
 forestBirdsBreakEl.addEventListener("click", function(){
