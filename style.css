@@ -16,7 +16,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: #fff;
+    color: white;
 }
 
 body.varietyPhoto {
@@ -24,7 +24,7 @@ body.varietyPhoto {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: #fff;
+    color: white;
 }
 
 body.flowerPhoto {
@@ -32,13 +32,13 @@ body.flowerPhoto {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: #fff;
+    color: white;
 }
 
 /* Main Container & Title */
 .mainContainer{
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 500px;
     text-align: center;
     padding: 20px;
     font-family: 'montserrat';
@@ -47,7 +47,7 @@ body.flowerPhoto {
 
 .title{
     font-family: 'tomatoes';
-    font-size: 40px;
+    font-size: 50px;
     margin-bottom: 10px;
     color: tomato;
 }
@@ -159,7 +159,7 @@ button:hover{
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: darkred;
     overflow-x: hidden;
     padding-top: 20px;
     transition: 0.5s;
@@ -176,7 +176,7 @@ button:hover{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color:#818181 ;
+    color: white;
     display: block;
     border: none;
     background: none;
@@ -188,14 +188,12 @@ button:hover{
 }
 
 .sidebar button:hover, .dropdownButton:hover{
-    color: #f1f1f1;
-    opacity: 1.0;
+    opacity: 0.5;
 }
 
 .dropdownContainer{
     display: none;
-    background-color: #262626;
-    padding-left: 8px;
+    padding-left: 20px;
 }
 
 /* Session Tracker */
