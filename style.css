@@ -27,8 +27,8 @@ body.varietyPhoto {
     color: white;
 }
 
-body.flowerPhoto {
-    background-image: url("assets/backgrounds/static/flower.jpg");
+body.soilPhoto {
+    background-image: url("assets/backgrounds/static/soil.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -61,7 +61,7 @@ body.flowerPhoto {
 
 .timerType{
     font-family: 'montserrat';
-    font-size: 20px;
+    font-size: 40px;
     color: darkolivegreen;
 }
 

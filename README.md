@@ -29,7 +29,7 @@ Asset Credits:
 
  variety - Image by Klaus Hausmann from Pixabay - tomatoes1703968_1920.jpg
 
- flower - Image by Sabine from Pixabay - nature-3517154_1920.jpg
+ soil - Adobe Stock - soil-7987444_1920.jpg
 
  Title Font: Tomatoes by Billy Argel Fonts via dafont.com
  

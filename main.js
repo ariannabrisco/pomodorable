@@ -31,11 +31,11 @@ const loveSongBreakEl = document.getElementById("loveSong")
 
 const backgroundTypes = [
     'varietyPhoto',
-    'flowerPhoto'
+    'soilPhoto'
 ]
 
 const varietyPhotoEl = document.getElementById("varietyPhoto")
-const flowerPhotoEl = document.getElementById("flowerPhoto")
+const soilPhotoEl = document.getElementById("soilPhoto")
 
 const sessionTrackerEl = document.getElementById("sessionTracker")
 
@@ -438,6 +438,6 @@ varietyPhotoEl.addEventListener("click", function(){
     setBackground("varietyPhoto");
 });
 
-flowerPhotoEl.addEventListener("click", function(){
-    setBackground("flowerPhoto");
+soilPhotoEl.addEventListener("click", function(){
+    setBackground("soilPhoto");
 });
